@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartcraft & Co - Where Memories Become Art</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #001f3f;
+            --secondary-blue: #003366;
+            --accent-gold: #d4af37;
+            --rose-gold: #b76e79;
+            --deep-blue: #1a3a5c;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #6c7a89;
+            --shadow: rgba(0, 31, 63, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 100%);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Background decorative elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #001233 0%, #001f3f 50%, #003366 100%);
+            color: var(--white);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 31, 63, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            font-style: italic;
+            margin-top: 0.25rem;
+            color: #d4af37;
+            font-weight: 300;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: var(--primary-navy);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            border: none;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cart-icon:hover {
+            background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .fav-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, #b76e79 0%, #d4a5ae 100%);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            border: none;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fav-icon:hover {
+            background: linear-gradient(135deg, #d4a5ae 0%, #b76e79 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(183, 110, 121, 0.6);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #001233 0%, #001f3f 30%, #003366 70%, #1a3a5c 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(183, 110, 121, 0.15) 0%, transparent 50%),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 1;
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 2rem;
+            color: #d4af37;
+            font-weight: 400;
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #001233 0%, #003366 50%, #b76e79 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #d4af37, #b76e79, #d4af37, transparent);
+            border-radius: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 31, 63, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .fav-heart {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .fav-heart:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+        }
+
+        .fav-heart.active {
+            background: linear-gradient(135deg, #b76e79 0%, #d4a5ae 100%);
+            color: white;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(183, 110, 121, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(10, 22, 40, 0.25), 0 0 0 2px rgba(212, 175, 55, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 100%);
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            background: var(--white);
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .product-size {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 1.75rem;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 1.15rem;
+            background: linear-gradient(135deg, #001233 0%, #001f3f 50%, #003366 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .add-to-cart:hover::before {
+            left: 100%;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #001233;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 40, 71, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .cart-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cart-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-cart:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            padding: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--secondary-blue);
+            font-weight: 700;
+        }
+
+        .remove-item {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .cart-footer {
+            padding: 2rem;
+            border-top: 2px solid var(--cream);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .proceed-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .proceed-button:hover {
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Custom Order Form Modal */
+        .custom-order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 40, 71, 0.8);
+            z-index: 3000;
+            backdrop-filter: blur(5px);
+        }
+
+        .custom-order-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-order-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        .custom-order-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .custom-order-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .custom-order-form {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 0 3px rgba(45, 74, 124, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-buttons button {
+            flex: 1;
+            padding: 1.25rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cancel-button {
+            background: var(--cream);
+            color: var(--text-dark);
+        }
+
+        .cancel-button:hover {
+            background: #e0ddd8;
+        }
+
+        .whatsapp-button {
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-button:hover {
+            background: #20ba5a;
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Heartcraft & Co</h1>
+                <p>Where Memories Become Art</p>
+            </div>
+            <div class="header-actions">
+                <button class="fav-icon" onclick="toggleFavorites()">
+                    ❤️ Favorites
+                    <span class="cart-count" id="favCount">0</span>
+                </button>
+                <button class="cart-icon" onclick="toggleCart()">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Heartcraft & Co</h2>
+            <p>Handcrafted gifts designed with heart, emotion, and elegance.</p>
+            <p class="tagline">✨ Not just a gift — a feeling ✨</p>
+            <div style="margin-top: 2.5rem; font-size: 1.1rem; opacity: 0.9;">
+                <span style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(212, 175, 55, 0.2); border-radius: 50px; margin: 0.5rem;">💝 Personalized</span>
+                <span style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(183, 110, 121, 0.2); border-radius: 50px; margin: 0.5rem;">✋ Handmade</span>
+                <span style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(212, 175, 55, 0.2); border-radius: 50px; margin: 0.5rem;">❤️ Made with Love</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2 class="section-title">Our Handcrafted Collection</h2>
+        <p class="section-subtitle">Each piece is uniquely crafted with love, just for you 💝</p>
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Cart</h3>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">Your cart is empty</div>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+                <button class="proceed-button" onclick="showCustomOrderForm()">Proceed to Custom Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div class="cart-modal" id="favModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>❤️ Your Favorites</h3>
+                <button class="close-cart" onclick="toggleFavorites()">×</button>
+            </div>
+            <div class="cart-items" id="favItems">
+                <div class="empty-cart">No favorites yet</div>
+            </div>
+            <div class="cart-footer" id="favFooter" style="display: none;">
+                <button class="proceed-button" onclick="addAllFavoritesToCart()">Add All to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Order Form Modal -->
+    <div class="custom-order-modal" id="customOrderModal">
+        <div class="custom-order-content">
+            <div class="custom-order-header">
+                <h3>Customize Your Order</h3>
+                <p>Tell us exactly how you want your gift to be made</p>
+            </div>
+            <div class="custom-order-form">
+                <div class="form-group">
+                    <label for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number *</label>
+                    <input type="tel" id="customerPhone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="customQuotes">Quotes/Text You Want *</label>
+                    <textarea id="customQuotes" placeholder="Write the quotes, messages, or text you want on your gift"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="customDetails">Special Customization Details *</label>
+                    <textarea id="customDetails" placeholder="Describe any special customizations (colors, themes, specific photos you'll provide, etc.)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="photoUpload">Upload Photos (Optional)</label>
+                    <input type="file" id="photoUpload" multiple accept="image/*" style="padding: 0.75rem; border: 2px dashed var(--secondary-blue); background: var(--cream);">
+                    <small style="display: block; margin-top: 0.5rem; color: var(--text-light); font-size: 0.9rem;">You can select multiple photos. We'll also accept photos via WhatsApp after order confirmation.</small>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address *</label>
+                    <textarea id="deliveryAddress" placeholder="Enter your complete delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="additionalNotes">Additional Notes</label>
+                    <textarea id="additionalNotes" placeholder="Any other special requests or information"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button class="cancel-button" onclick="closeCustomOrderForm()">Cancel</button>
+                    <button class="whatsapp-button" onclick="sendToWhatsApp()">
+                        📱 Send Order via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+                <div class="contact-item">📧 heartcraftandco@gmail.com</div>
+                <div class="contact-item">📱 7840912662</div>
+                <div class="contact-item">📍 Pune, Maharashtra, India</div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/heartcraftand.co" target="_blank">Instagram</a>
+                <a href="mailto:heartcraftandco@gmail.com">Email</a>
+                <a href="https://wa.me/917840912662" target="_blank">WhatsApp</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Heartcraft & Co. All rights reserved. | Handmade with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "Vintage Frame",
+                size: "8x6 INCH - Adding elegance to captured moments",
+                price: 499,
+                image:"images/p1.png"
+            },
+            {
+                id: 2,
+                name: "Vintage Letter",
+                size: "A4 SIZE with vintage box",
+                price: 299,
+                image: "images/p2.png"
+            },
+            {
+                id: 3,
+                name: "Portraits",
+                size: "A3 SIZE - Beautiful hand-drawn sketches",
+                price: 999,
+                image: "images/p3.jpeg"
+            },
+            {
+                id: 4,
+                name: "Doodle Frames",
+                size: "A4 SIZE: ₹999 | A3 SIZE: ₹1199",
+                price: 999,
+                image: "images/p4.jpeg"
+            },
+            {
+                id: 5,
+                name: "Number Photo Light Frame",
+                size: "A3 SIZE - LED lights with photo collage",
+                price: 899,
+                image: "images/p5.jpeg"
+            },
+            {
+                id: 6,
+                name: "Clip Photo Memory Frame",
+                size: "A3 SIZE - Hanging polaroid style",
+                price: 799,
+                image: "images/p6.jpeg"
+            },
+            {
+                id: 7,
+                name: "Polaroid Memory Frame",
+                size: "10X12 INCH - Classic memories display",
+                price: 999,
+                image: "images/p7.jpeg"
+            },
+            {
+                id: 8,
+                name: "Memory Frame",
+                size: "A3 SIZE - Beautiful collage with quotes",
+                price: 1199,
+                image: "images/p8.jpeg"
+            },
+            {
+                id: 9,
+                name: "Paper Rose Heart Frame",
+                size: "Handcrafted with love - Elegant paper roses",
+                price: 1999,
+                image: "images/p9.jpeg"
+            },
+            {
+                id: 10,
+                name: "Collage Frame",
+                size: "A4 SIZE - Perfect photo arrangement",
+                price: 399,
+                image: "images/p10.jpeg"
+            },
+            {
+                id: 11,
+                name: "Story Art",
+                size: "A3 SIZE",
+                price: 1799,
+                image: "images/p11.jpeg"
+            },
+            {
+                id: 12,
+                name: "Photo Bouquet",
+                size: "Beautiful photo arrangement with flowers",
+                price: 899,
+                image: "images/p12.jpeg"
+            },
+            {
+                id: 13,
+                name: "16 Things I Love About You",
+                size: "A3 SIZE - Personalized love notes",
+                price: 299,
+                image: "images/p13.jpeg"
+            },
+            {
+                id: 14,
+                name: "Photo Film Roll Gift",
+                size: "10 Photos: ₹999 | 20 Photos: ₹1299",
+                price: 999,
+                image: "images/p14.jpeg"
+            },
+            {
+                id: 15,
+                name: "Explosion Gift Box",
+                size: "Basic: ₹1299 + Customization charges | Height: 5-6ft",
+                price: 1299,
+                image: "images/p15.png"
+            },
+            {
+                id: 16,
+                name: "String Art",
+                size: "Small (10-12\"): ₹1200 | Medium (14-16\"): ₹1800 | Large (18-20\"): ₹2500",
+                price: 1200,
+                image: "images/p16.jpeg"
+            },
+            {
+                id: 17,
+                name: "Special Edition Newspaper",
+                size: "Personalized newspaper gift",
+                price: 349,
+                image: "images/p17.png"
+            }
+        ];
+
+        let cart = [];
+        let favorites = [];
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <button class="fav-heart ${favorites.some(f => f.id === product.id) ? 'active' : ''}" onclick="toggleFavorite(${product.id})">
+                        ${favorites.some(f => f.id === product.id) ? '❤️' : '🤍'}
+                    </button>
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27400%27%3E%3Crect fill=%27%23f8f6f3%27 width=%27400%27 height=%27400%27/%3E%3Ctext fill=%27%23003366%27 font-family=%27Arial%27 font-size=%2720%27 x=%2750%25%27 y=%2750%25%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${product.name}%3C/text%3E%3C/svg%3E'">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-size">${product.size}</p>
+                        <p class="product-price">₹${product.price}</p>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle Favorite
+        function toggleFavorite(productId) {
+            const product = products.find(p => p.id === productId);
+            const index = favorites.findIndex(f => f.id === productId);
+            
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(product);
+            }
+            
+            updateFavorites();
+            renderProducts();
+        }
+
+        // Update Favorites Display
+        function updateFavorites() {
+            const favCount = document.getElementById('favCount');
+            const favItems = document.getElementById('favItems');
+            const favFooter = document.getElementById('favFooter');
+
+            favCount.textContent = favorites.length;
+
+            if (favorites.length === 0) {
+                favItems.innerHTML = '<div class="empty-cart">No favorites yet</div>';
+                favFooter.style.display = 'none';
+            } else {
+                favItems.innerHTML = favorites.map((item, index) => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                        </div>
+                        <button class="remove-item" onclick="toggleFavorite(${item.id})">×</button>
+                    </div>
+                `).join('');
+                favFooter.style.display = 'block';
+            }
+        }
+
+        // Toggle Favorites Modal
+        function toggleFavorites() {
+            const modal = document.getElementById('favModal');
+            modal.classList.toggle('active');
+        }
+
+        // Add All Favorites to Cart
+        function addAllFavoritesToCart() {
+            favorites.forEach(item => {
+                if (!cart.find(c => c.id === item.id)) {
+                    cart.push(item);
+                }
+            });
+            updateCart();
+            toggleFavorites();
+            
+            // Show success message
+            alert('All favorites added to cart! 🛒');
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            cart.push(product);
+            updateCart();
+            
+            // Show feedback
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Added!';
+            btn.style.background = '#27ae60';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 1000);
+        }
+
+        // Update Cart
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartCount.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartFooter.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `).join('');
+
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                cartTotal.textContent = `₹${total}`;
+                cartFooter.style.display = 'block';
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Toggle Cart
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+        }
+
+        // Show Custom Order Form
+        function showCustomOrderForm() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            document.getElementById('cartModal').classList.remove('active');
+            document.getElementById('customOrderModal').classList.add('active');
+        }
+
+        // Close Custom Order Form
+        function closeCustomOrderForm() {
+            document.getElementById('customOrderModal').classList.remove('active');
+        }
+
+        // Send to WhatsApp
+        function sendToWhatsApp() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const quotes = document.getElementById('customQuotes').value;
+            const details = document.getElementById('customDetails').value;
+            const address = document.getElementById('deliveryAddress').value;
+            const notes = document.getElementById('additionalNotes').value;
+            const photoUpload = document.getElementById('photoUpload');
+            const photoCount = photoUpload.files.length;
+
+            if (!name || !phone || !quotes || !details || !address) {
+                alert('Please fill in all required fields (marked with *)');
+                return;
+            }
+
+            // Create order message
+            let message = `*New Order from Heartcraft & Co*\n\n`;
+            message += `*Customer Details:*\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n\n`;
+            
+            message += `*Order Items:*\n`;
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name} - ₹${item.price}\n`;
+            });
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            message += `\n*Total: ₹${total}*\n\n`;
+            
+            message += `*Customization Details:*\n`;
+            message += `Quotes/Text: ${quotes}\n\n`;
+            message += `Special Details: ${details}\n\n`;
+            message += `Delivery Address: ${address}\n`;
+            
+            if (photoCount > 0) {
+                message += `\n📸 Photos Selected: ${photoCount} photo(s) - I will send them separately\n`;
+            }
+            
+            if (notes) {
+                message += `\nAdditional Notes: ${notes}`;
+            }
+
+            // WhatsApp number
+            const whatsappNumber = '917840912662';
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Clear cart and close modals
+            setTimeout(() => {
+                if (photoCount > 0) {
+                    alert('Thank you! Your order has been sent via WhatsApp.\n\n📸 Please remember to send your ' + photoCount + ' selected photo(s) via WhatsApp to complete your order!');
+                } else {
+                    alert('Thank you! Your order has been sent via WhatsApp. We will contact you soon!');
+                }
+                cart = [];
+                updateCart();
+                closeCustomOrderForm();
+            }, 500);
+        }
+
+        // Initialize
+        renderProducts();
+    </script>
+</body>
+</html>
